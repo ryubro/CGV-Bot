@@ -1,3 +1,11 @@
+/**
+작성자  : 김병용
+라이센스: MIT License
+
+아래의 코드는 cgv.co.kr의 코드에 의존하며 cgv.co.kr의 코드에 대한 권리는 저에게 없고
+권리자에게 사용을 허락받지도 않았습니다.
+*/
+
 var contentWindow = $('#ticket_iframe')[0].contentWindow;
 var preferredSeats = []; // 선호하는 좌석을 저장하는 어레이
 
