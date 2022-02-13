@@ -142,11 +142,12 @@ function seatInfoHandler() {
 	}
 } // seatInfoHandler()
 
+var bell = null;
+
 function passedSetHandler(seats) {
 	for (var i = 0; i < seats.length; ++i) {
 		$(seats[i]).parent().addClass('selected');
 	}
-	var bell = new Audio('http://upload.wikimedia.org/wikipedia/commons/c/ce/Rotating-bicycle-bell.wav');
 	bell.play();
 	$("#ry-button").remove();
 	$("#ry-message").remove();
@@ -168,6 +169,7 @@ $(document.body).append('<div id="ry-message" style="position:fixed;top:10px;lef
 $(document.body).append('<div id="ry-button" style="position:fixed;bottom:10px;left:50%;width:200px;height:50px;margin-left:-100px;background-color:#55f;color:white;font-size:20px;text-align:center;line-height:50px;cursor:pointer;z-index:9999">선택완료</div>');
 $("#ry-button").one("click", function(e){
 	contentWindow.loadSeatInfo(seatInfoHandler);
+	bell = new Audio('https://upload.wikimedia.org/wikipedia/commons/c/ce/Rotating-bicycle-bell.wav');
 	$("#ry-button").css("background-color","#ccc").css("cursor","initial");
 	$("#ry-message").html("벨소리가 나면 돌아와서 결재하세요")
 }).hide();
