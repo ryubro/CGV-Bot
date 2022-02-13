@@ -1,0 +1,27 @@
+{
+  "name": "cgv-bot",
+  "version": "1.1.0",
+  "description": "A bookmarklet for booking movie tickets in CGV, automatically",
+  "main": "bookmarklet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p dist && node build.js \"$(npx terser bookmarklet.js)\" > dist/index.html",
+    "deploy": "npm run build && npx gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryubro/CGV-Bot.git"
+  },
+  "keywords": [
+    "cgv",
+    "booking",
+    "movie",
+    "ticket"
+  ],
+  "author": "ByoungYong Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryubro/CGV-Bot/issues"
+  },
+  "homepage": "https://github.com/ryubro/CGV-Bot#readme"
+}
