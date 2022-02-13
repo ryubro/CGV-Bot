@@ -142,11 +142,12 @@ function seatInfoHandler() {
 	}
 } // seatInfoHandler()
 
+var bell = null;
+
 function passedSetHandler(seats) {
 	for (var i = 0; i < seats.length; ++i) {
 		$(seats[i]).parent().addClass('selected');
 	}
-	var bell = new Audio('http://upload.wikimedia.org/wikipedia/commons/c/ce/Rotating-bicycle-bell.wav');
 	bell.play();
 	$("#ry-button").remove();
 	$("#ry-message").remove();
@@ -164,10 +165,11 @@ function ryCmp(a, b) {
 var originalClickListener = contentWindow.ftSeatClickListener;
 contentWindow.ftSeatClickListener = newClickListener;
 contentWindow.ftResetAllSeats(true);
-$(document.body).append('<div id="ry-message" style="position:fixed;top:10px;left:50%;width:90%;margin-left:-45%;padding:10px 0;background-color:rgba(0,0,0,0.5);color:white;font-size:15px;text-align:center;">선호하는 순으로 좌석을 선택세요</div>');
-$(document.body).append('<div id="ry-button" style="position:fixed;bottom:10px;left:50%;width:200px;height:50px;margin-left:-100px;background-color:#55f;color:white;font-size:20px;text-align:center;line-height:50px;cursor:pointer">선택완료</div>');
+$(document.body).append('<div id="ry-message" style="position:fixed;top:10px;left:50%;width:90%;margin-left:-45%;padding:10px 0;background-color:rgba(0,0,0,0.5);color:white;font-size:15px;text-align:center;z-index:9999">선호하는 순으로 좌석을 선택세요</div>');
+$(document.body).append('<div id="ry-button" style="position:fixed;bottom:10px;left:50%;width:200px;height:50px;margin-left:-100px;background-color:#55f;color:white;font-size:20px;text-align:center;line-height:50px;cursor:pointer;z-index:9999">선택완료</div>');
 $("#ry-button").one("click", function(e){
 	contentWindow.loadSeatInfo(seatInfoHandler);
+	bell = new Audio('https://upload.wikimedia.org/wikipedia/commons/c/ce/Rotating-bicycle-bell.wav');
 	$("#ry-button").css("background-color","#ccc").css("cursor","initial");
 	$("#ry-message").html("벨소리가 나면 돌아와서 결재하세요")
 }).hide();
