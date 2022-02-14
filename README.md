@@ -5,4 +5,4 @@ bookmarklet.js 소스를 [Bookmarkleter](http://chriszarate.github.io/bookmarkle
 
 - 설치: https://ryubro.github.io/CGV-Bot/
 - 사용방법: https://www.youtube.com/watch?v=ikHZVfQZFCI
-- 제작기: https://ryubro.tumblr.com/post/117904911918/
+- 제작기: https://tumblog.ryubro.com/post/117904911918/
