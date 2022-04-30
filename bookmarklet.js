@@ -164,7 +164,7 @@ function ryCmp(a, b) {
 
 var originalClickListener = contentWindow.ftSeatClickListener;
 contentWindow.ftSeatClickListener = newClickListener;
-contentWindow.ftResetAllSeats(true);
+contentWindow.reservationSeatReset(true);
 $(document.body).append('<div id="ry-message" style="position:fixed;top:10px;left:50%;width:90%;margin-left:-45%;padding:10px 0;background-color:rgba(0,0,0,0.5);color:white;font-size:15px;text-align:center;z-index:9999">선호하는 순으로 좌석을 선택세요</div>');
 $(document.body).append('<div id="ry-button" style="position:fixed;bottom:10px;left:50%;width:200px;height:50px;margin-left:-100px;background-color:#55f;color:white;font-size:20px;text-align:center;line-height:50px;cursor:pointer;z-index:9999">선택완료</div>');
 $("#ry-button").one("click", function(e){
