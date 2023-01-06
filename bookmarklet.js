@@ -65,6 +65,8 @@ function getTargetNumSeat() {
 // 자리를 새로고침 한 후에 호출할 함수
 // loadSeatInfoNewSuccess 를 덮어씀
 function seatInfoHandler() {
+	contentWindow.startTime = new Date;
+	contentWindow.limitResetCnt = 0;
 	var prefAvalSeats = []; // 선호하는 자리 중 가능한 모든 자리
 	var seatInfo = contentWindow.$.cgv.data.SEAT_INFO.SEAT_INFO;
 	var avalSeats = []; // 가능한 모든 자리
