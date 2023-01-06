@@ -14,6 +14,9 @@ $(contentWindow.document).find('body')[0].appendChild(contentWindow.document.cre
 var customStyle = contentWindow.document.styleSheets[contentWindow.document.styleSheets.length - 1];
 customStyle.insertRule('#seats_list .row .seat a span.no.ry-pref {background-color:blue !important;}', 0);
 
+
+contentWindow.document.querySelector(".mouse_block").remove();
+
 // 사용자가 좌석을 클릭했을 때 호출될 함수
 // ftSeatClickListener 를 덮어씀
 function newClickListener(e) {
@@ -60,8 +63,10 @@ function getTargetNumSeat() {
 }
 
 // 자리를 새로고침 한 후에 호출할 함수
-// loadSeatInfoSuccess 를 덮어씀
+// loadSeatInfoNewSuccess 를 덮어씀
 function seatInfoHandler() {
+	contentWindow.startTime = new Date;
+	contentWindow.limitResetCnt = 0;
 	var prefAvalSeats = []; // 선호하는 자리 중 가능한 모든 자리
 	var seatInfo = contentWindow.$.cgv.data.SEAT_INFO.SEAT_INFO;
 	var avalSeats = []; // 가능한 모든 자리
@@ -115,7 +120,7 @@ function seatInfoHandler() {
 		} // for loop
 
 		if (passedSet.length == 0) {
-			setTimeout(function(){contentWindow.loadSeatInfo(seatInfoHandler);}, 5000);
+			setTimeout(function(){contentWindow.loadSeatInfoNew(seatInfoHandler);}, 5000);
 			return;
 		}
 
@@ -137,7 +142,7 @@ function seatInfoHandler() {
 
 	// 필요한 자리만큼 가능한 선호자리가 나지 않음
 	} else {
-		setTimeout(function(){contentWindow.loadSeatInfo(seatInfoHandler);}, 5000);
+		setTimeout(function(){contentWindow.loadSeatInfoNew(seatInfoHandler);}, 5000);
 		return;
 	}
 } // seatInfoHandler()
@@ -171,5 +176,5 @@ $("#ry-button").one("click", function(e){
 	bell = new Audio('https://upload.wikimedia.org/wikipedia/commons/c/ce/Rotating-bicycle-bell.wav');
 	$("#ry-button").css("background-color","#ccc").css("cursor","initial");
 	$("#ry-message").html("벨소리가 나면 돌아와서 결재하세요")
-	contentWindow.loadSeatInfo(seatInfoHandler);
+	contentWindow.loadSeatInfoNew(seatInfoHandler);
 }).hide();
